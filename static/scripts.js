@@ -51,6 +51,47 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // upload form
+    document.querySelector('#upload-form').onsubmit = function() {
+
+        const image = document.querySelector('#image-file').value;
+      
+        fetch('/upload', {
+          method: 'POST',
+          body: JSON.stringify({
+              image: image
+          })
+        })
+        .then(response => response.json())
+        .then(paragraphs => {
+            // Print result
+            console.log(result);
+            const section = document.querySelector("#text-output")
+            console.log(section)
+            section.innerHTML = "It workedhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+            const about = document.querySelector("#about")
+            about.innerHTML = "THIS WORKS"
+
+            // paragraph.forEach(paragraphs => {
+
+            //     // article
+            //     const article = document.createElement('article');
+            //     article.className = "list-group-item";
+            //     article.id = `p${post.id}`;
+        
+            //     // content
+            //     const content = document.createElement('p');
+            //     content.innerHTML = post.text;
+        
+            //     article.append(content);
+        
+            //     section.append(article)
+        
+            //     // console.log(post)
+            // })
+            .catch(err => console.error(err));
+        });
+    }
 });
 
 /*
