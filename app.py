@@ -30,7 +30,8 @@ def upload_image():
         img_data.seek(0)
 
         
-        return detect_document(img)
+        paragraph_coords = detect_document(img)
+        return add_to_pdf(paragraph_coords)
 
         # return "recived: {}".format(request.form)
 

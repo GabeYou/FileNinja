@@ -63,14 +63,29 @@ window.addEventListener('DOMContentLoaded', event => {
           })
         })
         .then(response => response.json())
-        .then(paragraphs => {
+        .then(pdf => {
             // Print result
             console.log(result);
-            const section = document.querySelector("#text-output")
-            console.log(section)
+            const iframe = document.querySelector("#text-output")
+            console.log(iframe)
+            iframe.src = pdf
 
             // paragraph.forEach(paragraphs => {
 
+            //     // article
+            //     const article = document.createElement('article');
+            //     article.className = "list-group-item";
+            //     article.id = `p${post.id}`;
+        
+            //     // content
+            //     const content = document.createElement('p');
+            //     content.innerHTML = post.text;
+        
+            //     article.append(content);
+        
+            //     section.append(article)
+        
+            //     // console.log(post)
             // })
             .catch(err => console.error(err));
         });
