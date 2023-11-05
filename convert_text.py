@@ -44,10 +44,8 @@ def detect_document(path):
     
     return paragraph_coords
 
-path = "C:\\Users\\nahle\\OneDrive\\Desktop\\Screenshot 2023-11-04 112207.png"
-
-def add_to_pdf(paragraph_coords):
-    doc = SimpleDocTemplate("demo_10.pdf",
+def add_to_pdf(paragraph_coords, name):
+    doc = SimpleDocTemplate(name+"to_text.pdf",
                         pagesize=letter,
                         rightMargin=72,
                         leftMargin=72,
@@ -72,4 +70,5 @@ def add_to_pdf(paragraph_coords):
 
     doc.build(flowables)
 
-    return doc
+    return {"path": os.getcwd() + name}
+    # return doc

@@ -16,7 +16,7 @@ def upload_image():
 
     image = request.files["image"]
 
-    if image.filename == "":
+    if image.name == "":
         return "No selected file"
 
     if image:
@@ -30,10 +30,12 @@ def upload_image():
         img_data.seek(0)
 
         
-        paragraph_coords = detect_document(img)
-        return add_to_pdf(paragraph_coords)
+        paragraph_coords = detect_document(image)
+        path = add_to_pdf(paragraph_coords, image.name) # returns path of output file
 
-        # return "recived: {}".format(request.form)
+        # application/pdf
+        return send_file(img, mimetype="image/png")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="127.0.0.1", port=5000)

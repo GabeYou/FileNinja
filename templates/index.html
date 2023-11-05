@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="static/styles.css" rel="stylesheet" />
+        <script src="/js/pdfobject.js"></script>
         <script src="static/scripts.js"></script>
     </head>
     <body id="page-top">
@@ -42,11 +43,11 @@
             <div class="container">
                 <!-- <div class="masthead-subheading">Welcome To Our Studio!</div> -->
                 <div class="masthead-heading text-uppercase">Welcome to NoteReader</div>
-                <form enctype="multipart/form-data" id="upload-form">
+                <form method="post" enctype="multipart/form-data" id="upload-form">
                     <input type="file" name="image" id="image-file">
                     <input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Upload">
                 </form>
-                <!-- <a class="btn btn-primary btn-xl text-uppercase" href="#services" onclick="sendImage()">Tell Me More</a> -->
+                <!-- <a class="btn btn-primary btn-xl text-uppercase" href="#services" onclick="sendImage()">Tell Me More</a> href="{{ url_for('upload_image')}}" method="POST"  -->
             </div>
         </header>
         <!-- Services
@@ -186,10 +187,7 @@
             </div>
         </section> -->
         <!-- About-->
-        <iframe id="text_output"
-                width="800"
-                height="500"> 
-        </iframe> 
+        <div id="text-output"></div> 
 
         <section class="page-section" id="about">
             <div class="container">

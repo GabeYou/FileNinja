@@ -8,7 +8,6 @@
 // 
 
 window.addEventListener('DOMContentLoaded', event => {
-
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -54,21 +53,27 @@ window.addEventListener('DOMContentLoaded', event => {
     // upload form
     document.querySelector('#upload-form').onsubmit = function() {
 
-        const image = document.querySelector('#image-file').value;
+        const files = document.querySelector('#image-file');
+        // const imageFile = image.files[0];
+        console.log(files)
       
         fetch('/upload', {
           method: 'POST',
           body: JSON.stringify({
-              image: image
+              files: files
           })
         })
+        // .then(res => { console.log(res); return res.text(); })
+        // .then(txt => console.log(txt))
         .then(response => response.json())
-        .then(pdf => {
+        .then(path => {
             // Print result
-            console.log(result);
-            const iframe = document.querySelector("#text-output")
-            console.log(iframe)
-            iframe.src = pdf
+            console.log(path);
+            // const iframe = document.querySelector("#text-output")
+            // console.log(iframe)
+            // iframe.src = path
+
+            // PDFObject.embed(path, "#text-output");
 
             // paragraph.forEach(paragraphs => {
 
@@ -87,8 +92,10 @@ window.addEventListener('DOMContentLoaded', event => {
         
             //     // console.log(post)
             // })
-            .catch(err => console.error(err));
-        });
+        }).catch(err => console.error(err));
+
+        const embed = document.querySelector("#text-output")
+        console.log(embed)
     }
 });
 
